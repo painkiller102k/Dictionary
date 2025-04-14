@@ -1,59 +1,59 @@
 import random
 
-sonastik = {
-    'koer': 'собака',
-    'kass': 'кошка',
-    'maja': 'дом',
-    'auto': 'машина',
-    'päike': 'солнце'
-}
+fail = 'sonastik.txt'
+
+def Loe_failist():
+    """
+    Загружает словарь из файла и возвращает его в виде словаря.
+    """
+    sonastik = {}
+    try:
+        with open(fail, 'r', encoding='utf-8') as f:
+            for rida in f:
+                if '=' in rida:
+                    est, rus = rida.strip().split('=', 1)
+                    sonastik[est] = rus
+    except FileNotFoundError:
+        print("Faili ei leitud")
+    return sonastik
+
+def salvesta_sonastik(sonastik):
+    with open(fail, 'w', encoding='utf-8') as f:
+        for est, rus in sonastik.items():
+            f.write(f"{est}={rus}\n")
+
+sonastik = Loe_failist()
 
 def tolgi_est_rus(sona: str) -> str:
-    """Tõlgib eesti keelest vene keelde.
-    переводит с эстонского на русский язык
-    """
-    if sona in sonastik:
-        return sonastik[sona]
-    else:
-        return "Sõna ei leitud sõnastikust."
+    return sonastik.get(sona, "Sõna ei leitud sõnastikust.")
 
 def tolgi_rus_est(sona: str) -> str:
-    """Tõlgib vene keelest eesti keelde.
-    перевод с русского на эстонский язык
-    """
     for est, rus in sonastik.items():
         if rus == sona:
             return est
     return "Sõna ei leitud sõnastikust."
 
 def lisa_sona():
-    """Lisab uue sõna sõnastikku.
-    добавляет новое слово в словарь
-    """
     est = input("Sisesta uus sõna eesti keeles: ")
     rus = input("Sisesta selle sõna vene tõlge: ")
     if est in sonastik:
         print("Sõna on juba sõnastikus.")
     else:
         sonastik[est] = rus
+        salvesta_sonastik(sonastik)
         print("Sõna lisatud!")
 
 def paranda_sona():
-    """Parandab sõna tõlget sõnastikus.
-    исправляет определенное слово
-    """
     est = input("Sisesta sõna, mida soovid parandada: ")
     if est in sonastik:
         uus_rus = input(f"Sisesta uus tõlge sõnale {est}: ")
         sonastik[est] = uus_rus
+        salvesta_sonastik(sonastik)
         print("Tõlge parandatud!")
     else:
         print("Sõna ei leitud sõnastikust.")
 
 def testi_teadmisi():
-    """Testib kasutaja teadmisi sõnastikust.
-    тест
-    """
     correct = 0
     total = len(sonastik)
     for est, rus in random.sample(list(sonastik.items()), total):
