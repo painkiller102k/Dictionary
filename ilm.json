@@ -1,0 +1,45 @@
+{
+    "coord": {
+        "lon": 26.7251,
+        "lat": 58.3806
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 15.78,
+        "feels_like": 14.85,
+        "temp_min": 15.17,
+        "temp_max": 17.14,
+        "pressure": 1008,
+        "humidity": 55,
+        "sea_level": 1008,
+        "grnd_level": 1002
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 4.63,
+        "deg": 230
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1745233087,
+    "sys": {
+        "type": 2,
+        "id": 2038091,
+        "country": "EE",
+        "sunrise": 1745203479,
+        "sunset": 1745257114
+    },
+    "timezone": 10800,
+    "id": 588335,
+    "name": "Tartu",
+    "cod": 200
+}

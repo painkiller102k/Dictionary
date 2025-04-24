@@ -25,8 +25,9 @@ print(list_2)
 with open('test.txt', 'r', encoding='utf-8-sig') as f:
     print(f.read())
 
+#######################################################################
 
-def failist_to_dict(f: str):
+def failist_to_dict(f: str): # loe failist
     riik_pealinn = {}  # sinastik riik : pealinn
     pealinn_riik = {}  # sinastik pealinn : riik
     riigid = []  # järjend kus talletakse riigide nimetused
@@ -43,7 +44,7 @@ riik_pealinn, pealinn_riik, riigid = failist_to_dict('riigid_pealinnad.txt')
 # print("riik_pealinn :", riik_pealinn)
 # print("pealinn_riik :", pealinn_riik)
 
-def kirjuta_failisse(f: str, riik_pealinn: dict):
+def kirjuta_failisse(f: str, riik_pealinn: dict): # salvesta failisse
     """Muudatuste salvestamine faili.
     """
     with open(f, 'w', encoding="utf-8-sig") as file:

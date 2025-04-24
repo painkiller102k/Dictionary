@@ -13,7 +13,7 @@ def Loe_failist():
                 if '=' in rida:
                     est, rus = rida.strip().split('=', 1)
                     sonastik[est] = rus
-    except FileNotFoundError:
+    except ValueError:
         print("Faili ei leitud")
     return sonastik
 

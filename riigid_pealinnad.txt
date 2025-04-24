@@ -24,7 +24,7 @@ Madalmaad-Amsterdam
 Makedoonia-Skopje
 Malta-Valletta
 Moldova-Chisinau
-Monaco-Monaco
+Monaco-Test Monaco 123
 Montenegro-Podgorica
 Norra-Oslo
 Poola-Varssavi
