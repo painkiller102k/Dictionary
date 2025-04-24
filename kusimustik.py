@@ -2,13 +2,14 @@ import json
 import random
 import smtplib
 
+
 # загрузка вопросов json
 def loe_kusimused_failist(failinimi):
     try:
         with open(failinimi, 'r', encoding='utf-8') as f:
             return json.load(f) #в словарт
     except FileNotFoundError:
-        print(f"Faili '{failinimi}' ei leitud. Alustame tühja küsimustikuga.")
+        print(f"Faili '{failinimi}' ei leitud.")
 
 # сохранение json
 def salvesta_kusimused_faili(failinimi, kusimusvastus):
@@ -25,6 +26,7 @@ def kysimustik(kusimusvastus, kasutaja_nimi, kysimuste_arv):
         vastus = input(f"{kysimus} ")
         if vastus.lower() == kusimusvastus[kysimus].lower():
             oiged_vastused += 1
+            print("Õige vastus ! ")
 
     return oiged_vastused
 
@@ -53,10 +55,8 @@ def saada_email(saaja, teema, sisu):
             f"From: {saatja_email}\n"
             f"To: {saaja}\n"
             f"Content-Type: text/plain; charset=utf-8\n\n"
-            f"{sisu}"
-        )
+            f"{sisu}" )
 
-        
         server.sendmail(saatja_email, saaja, email_message.encode('utf-8'))
         server.quit()
         print(f"E-kiri saadetud: {saaja}")
@@ -73,7 +73,7 @@ while True:
     valik = input("Vali tegevus: ")
 
     if valik == "1":
-        nimi = input("Sisesta nimi ja perekonnanimi: ")
+        nimi = input("Sisesta nimi ja perekonanimi : ")
         email = input("Sisesta email aadress: ")
         
         if len(kusimusvastus) < 4:
@@ -101,13 +101,13 @@ while True:
 
         else:
             with open("valed.txt", "a", encoding="utf-8") as f:
-                f.write(f"{nimi} – {oiged} õigesti\n")
+                f.write(f"{nimi} – {oiged} õigesti \n \n")
             print(f"Tulemused salvestatud faili 'valed.txt'. Õigeid vastuseid: {oiged}")
 
     elif valik == "2":
         lisa_kusimus(failinimi, kusimusvastus)
     elif valik == "3":
-        print("Head aega!")
+        print("Head aega ! ")
         break
     else:
-        print("Vale valik, proovi uuesti.")
+        print("Vale valik ! ")
