@@ -7,7 +7,7 @@ import smtplib
 def loe_kusimused_failist(failinimi):
     try:
         with open(failinimi, 'r', encoding='utf-8') as f:
-            return json.load(f) #в словарт
+            return json.load(f) #словарь
     except FileNotFoundError:
         print(f"Faili '{failinimi}' ei leitud.")
 
